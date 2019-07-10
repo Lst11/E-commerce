@@ -19,5 +19,7 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="com.gmail.ecommerce.presentation.screen.product.order.ProductOrderActivity"/>
+
     </application>
 </manifest>

@@ -16,9 +16,9 @@ class ProductListViewModel : BaseViewModel<ProductRouter>() {
 
     val isProgressEnabled = ObservableBoolean(false)
 
-    private val studentListUseCase = UseCaseProvider.provideGetProductListUseCase()
+    private val productListUseCase = UseCaseProvider.provideGetProductListUseCase()
 
-    private val searchStudentsUseCase = UseCaseProvider.provideSearchProductUseCase()
+    private val searchProductUseCase = UseCaseProvider.provideSearchProductUseCase()
 
 
     private val listener = object : ClickListener {
@@ -32,9 +32,7 @@ class ProductListViewModel : BaseViewModel<ProductRouter>() {
     init {
         adapter.listener = listener
         isProgressEnabled.set(true)
-        val disposable = studentListUseCase.get()
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
+        val disposable = productListUseCase.get()
                 .subscribeBy(
                         onNext = {
                             Log.e("aaa", "ProductListViewModel size of the LIST is: " + it.size)
@@ -57,7 +55,7 @@ class ProductListViewModel : BaseViewModel<ProductRouter>() {
         if (isProgressEnabled.get()) return
 
         val studentSearch = ProductSearch(search)
-        val disposable = searchStudentsUseCase.search(studentSearch)
+        val disposable = searchProductUseCase.search(studentSearch)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
@@ -70,9 +68,5 @@ class ProductListViewModel : BaseViewModel<ProductRouter>() {
                         }
                 )
         addToDisposable(disposable)
-    }
-
-    fun onClickAdd() {
-        router?.goToProductDetails("")
     }
 }

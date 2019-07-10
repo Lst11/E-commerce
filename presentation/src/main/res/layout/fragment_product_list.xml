@@ -40,17 +40,5 @@
 
         </LinearLayout>
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
-            android:layout_margin="2dp"
-            android:clickable="true"
-            android:tint="@android:color/black"
-            android:onClick="@{(v)->viewModel.onClickAdd()}"
-            app:backgroundTint="@color/gray_transparent"
-            app:srcCompat="@android:drawable/ic_input_add" />
-
     </FrameLayout>
 </layout>

@@ -11,25 +11,15 @@ object UseCaseProvider {
 
     fun provideGetProductListUseCase(): GetProductsUseCase {
 
-        //Берем репозиторий из data слоя (репозиторий имплементирует интерфейс который
-        // находится в domain слое)
         val repository = ProductRepositoryImpl()
-
-        // создаем useCase и передаем в коструктор созданный репозиторий(который
-        // находится в data слое, но domain не знает что репозиторий из data слоя)
 
         val useCase = GetProductsUseCase(repository, uiThread)
 
         return useCase
     }
 
-
-    fun provideDeleteProductUseCase(): DeleteProductUseCase {
-        return DeleteProductUseCase(ProductRepositoryImpl(), uiThread)
-    }
-
-    fun provideUpdateProductUseCase(): UpdateProductUseCase {
-        return UpdateProductUseCase(ProductRepositoryImpl(), uiThread)
+    fun provideOrderProductUseCase(): OrderProductUseCase {
+        return OrderProductUseCase(ProductRepositoryImpl(), uiThread)
     }
 
     fun provideSearchProductUseCase(): SearchProductUseCase {

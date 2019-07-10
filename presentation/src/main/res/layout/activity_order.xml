@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.gmail.ecommerce.presentation.screen.product.details.ProductDetailsViewModel" />
+            type="com.gmail.ecommerce.presentation.screen.product.order.ProductOrderViewModel" />
     </data>
 
     <LinearLayout
@@ -17,56 +17,43 @@
         android:orientation="vertical"
         android:weightSum="10">
 
-        <RelativeLayout
-            android:id="@+id/relativeLayout"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="6">
 
-            <ImageView
-                android:id="@+id/image"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:layout_gravity="center"
-                android:layout_marginBottom="10dp"
-                android:cropToPadding="true"
-                app:src="@{viewModel.imageUrl}" />
 
-        </RelativeLayout>
-
-        <TextView
-            android:id="@+id/nameText"
+        <EditText
+            android:id="@+id/nameEditText"
             style="@style/text_simple"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
             android:hint="Name"
-            android:inputType="text"
+            android:inputType="textMultiLine"
             android:text="@={viewModel.name}"
             android:textColorHint="@color/gray_dark" />
 
-        <TextView
-            android:id="@+id/priceText"
+
+        <EditText
+            android:id="@+id/emailText"
             style="@style/text_simple"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
             android:gravity="center"
-            android:hint="Price"
-            android:text="@={viewModel.price}"
+            android:inputType="textEmailAddress|textMultiLine"
+            android:hint="Email"
+            android:text="@={viewModel.email}"
             android:textColorHint="@color/gray_dark" />
 
-        <TextView
-            android:id="@+id/descriptionText"
+        <EditText
+            android:id="@+id/phoneText"
             style="@style/text_simple"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.5"
+            android:layout_weight="1"
             android:gravity="center"
-            android:hint="Description"
-            android:text="@={viewModel.description}"
+            android:inputType="phone"
+            android:hint="Phone number"
+            android:text="@={viewModel.phone}"
             android:textColorHint="@color/gray_dark" />
 
         <LinearLayout

@@ -2,7 +2,6 @@ package com.gmail.ecommerce.presentation.screen.product.details
 
 import android.databinding.ObservableBoolean
 import android.databinding.ObservableField
-import android.os.Handler
 import android.util.Log
 import com.gmail.ecommerce.fuctories.UseCaseProvider
 import com.gmail.ecommerce.presentation.base.BaseViewModel
@@ -21,6 +20,7 @@ class ProductDetailsViewModel : BaseViewModel<ProductRouter>() {
     var id = ("")
     var name = ObservableField<String>("")
     var price = ObservableField<String>("")
+    var description = ObservableField<String>("")
     var imageUrl = ObservableField<String>("")
 
     fun setProductId(id: String) {
@@ -35,6 +35,7 @@ class ProductDetailsViewModel : BaseViewModel<ProductRouter>() {
                             Log.e("aaa", "Product is ${it.name} ${it.price}")
                             this.id = it.id
                             this.name.set(it.name)
+                            this.description.set(it.description)
                             this.price.set(it.price)
                             this.imageUrl.set(it.imageUrl)
                         },
@@ -48,28 +49,19 @@ class ProductDetailsViewModel : BaseViewModel<ProductRouter>() {
     }
 
     fun onClickSave() {
-        val product = com.gmail.name.domain.entity.Product(id, name.get() ?: "", price.get()
-                ?: "", imageUrl.get() ?: "")
-        Log.e("aaa", "Changing data is: $product")
-        useCases.provideUpdateProductUseCase().update(product)
-                ?.subscribeBy(
-                        onError = { Log.e("aaa", "ProductDetailsViewModel onClickSave onError: $it") },
-                        onComplete = {
-                            Log.e("aaa", "ProductDetailsViewModel onClickSave onComplete")
-                            Handler().postDelayed({}, 120)
-                            router?.goToProductList()
-                        })
-    }
 
-    fun onClickDelete() {
-        useCases.provideDeleteProductUseCase().delete(id)
-                ?.subscribeBy(
-                        onError = { Log.e("aaa", "ProductDetailsViewModel onClickDelete onError: $it") },
-                        onComplete = {
-                            Log.e("aaa", "ProductDetailsViewModel onClickDelete onComplete")
-                            Handler().postDelayed({}, 120)
-                            router?.goToProductList()
-                        })
+        router?.startOrder(id)
+//        val product = com.gmail.name.domain.entity.Product(id, name.get() ?: "", price.get()
+//                ?: "", imageUrl.get() ?: "")
+//        Log.e("aaa", "Changing data is: $product")
+//        useCases.provideOrderProductUseCase().order(product)
+//                ?.subscribeBy(
+//                        onError = { Log.e("aaa", "ProductDetailsViewModel onClickSave onError: $it") },
+//                        onComplete = {
+//                            Log.e("aaa", "ProductDetailsViewModel onClickSave onComplete")
+//                            Handler().postDelayed({}, 120)
+//                            router?.goToProductList()
+//                        })
     }
 }
 
