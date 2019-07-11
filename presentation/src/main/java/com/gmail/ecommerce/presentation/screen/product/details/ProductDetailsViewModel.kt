@@ -49,19 +49,7 @@ class ProductDetailsViewModel : BaseViewModel<ProductRouter>() {
     }
 
     fun onClickSave() {
-
         router?.startOrder(id)
-//        val product = com.gmail.name.domain.entity.Product(id, name.get() ?: "", price.get()
-//                ?: "", imageUrl.get() ?: "")
-//        Log.e("aaa", "Changing data is: $product")
-//        useCases.provideOrderProductUseCase().order(product)
-//                ?.subscribeBy(
-//                        onError = { Log.e("aaa", "ProductDetailsViewModel onClickSave onError: $it") },
-//                        onComplete = {
-//                            Log.e("aaa", "ProductDetailsViewModel onClickSave onComplete")
-//                            Handler().postDelayed({}, 120)
-//                            router?.goToProductList()
-//                        })
     }
 }
 
